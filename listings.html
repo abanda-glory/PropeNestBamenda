@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listings - PropeNest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/listings.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <!-- <h2>PropeNest</h2> -->
+                     <img src="./assets/images/logo.jpg" class="img-logo" alt="Site logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listings.html" class="active">Listings</a></li>
+                    <li><a href="favorites.html">Favorites</a></li>
+                    <li><a href="admin-login.html" class="admin-link">Admin</a></li>
+                </ul>
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Property Listings in Bamenda</h1>
+            <p>Browse through properties in all Bamenda quarters</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="listings-section">
+        <div class="container">
+            <div class="listings-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filter-header">
+                        <h3>Filters</h3>
+                        <button class="btn-secondary" onclick="resetFilters()" id="reset-btn">Reset</button>
+                    </div>
+
+                    <!-- Search -->
+                    <div class="filter-group">
+                        <label>Search</label>
+                        <input type="text" id="searchInput" placeholder="Search properties...">
+                    </div>
+
+                    <!-- Property Type -->
+                    <div class="filter-group">
+                        <label>Property Type</label>
+                        <select id="typeFilter" onchange="applyFilters()">
+                            <option value="all">All Types</option>
+                            <option value="house">House</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="land">Land</option>
+                        </select>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select id="statusFilter" onchange="applyFilters()">
+                            <option value="all">All</option>
+                            <option value="rent">For Rent</option>
+                            <option value="sale">For Sale</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Range -->
+                    <div class="filter-group">
+                        <label>Price Range (FCFA)</label>
+                        <input type="number" id="minPrice" placeholder="Min Price" onchange="applyFilters()">
+                        <input type="number" id="maxPrice" placeholder="Max Price" onchange="applyFilters()">
+                    </div>
+
+                    <!-- Bedrooms -->
+                    <div class="filter-group">
+                        <label>Bedrooms</label>
+                        <select id="bedroomsFilter" onchange="applyFilters()">
+                            <option value="all">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+
+                    <!-- Bathrooms -->
+                    <div class="filter-group">
+                        <label>Bathrooms</label>
+                        <select id="bathroomsFilter" onchange="applyFilters()">
+                            <option value="all">Any</option>
+                            <option value="1">1+</option>
+                            <option value="2">2+</option>
+                            <option value="3">3+</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+
+                    <!-- Min Area -->
+                    <div class="filter-group">
+                        <label>Minimum Area (m²)</label>
+                        <input type="number" id="minArea" placeholder="e.g., 100" onchange="applyFilters()">
+                    </div>
+                </aside>
+
+                <!-- Properties Grid -->
+                <div class="listings-content">
+                    <div class="listings-header">
+                        <p><span id="resultsCount">0</span> properties found</p>
+                        <button class="mobile-filter-toggle" onclick="toggleMobileFilters()">
+                            🔍 Filters
+                        </button>
+                    </div>
+                    
+                    <div class="properties-grid" id="propertiesGrid">
+                        <!-- Properties will be loaded here -->
+                    </div>
+
+                    <div id="noResults" class="empty-state" style="display: none;">
+                        <h3>No properties found</h3>
+                        <p>Try adjusting your filters to see more results.</p>
+                        <button class="btn btn-primary" onclick="resetFilters()">Reset Filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PropeNest</h3>
+                    <p>Your trusted partner in finding the perfect property in Bamenda - The City of Legends.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                        <li><a href="favorites.html">Favorites</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: abandaglory91@gmail.com</p>
+                    <p>Phone: +237 683 528 474</p>
+                    <p>Location: Mulang, Bamenda, Northwest Region</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PropeNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/listings.js"></script>
+</body>
+</html>

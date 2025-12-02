@@ -1,0 +1,246 @@
+/* Responsive Design for All Pages */
+
+/* Tablet and below */
+@media (max-width: 968px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 4rem 2rem;
+        box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        transition: right 0.3s;
+        z-index: 1001;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links li {
+        margin: 1rem 0;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+        z-index: 1002;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    .properties-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    :root {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .nav-content {
+        padding: 0.75rem 0;
+    }
+    
+    .logo h2 {
+        font-size: 1.25rem;
+    }
+    
+    .hero {
+        height: 500px;
+        padding: 0 10px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .search-box {
+        flex-direction: column;
+        border-radius: 10px;
+        max-width: 100%;
+    }
+    
+    .search-box input {
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .search-box button {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .quick-filters {
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .properties-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .property-card {
+        margin-bottom: 1rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stat-card h3 {
+        font-size: 2.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .page-header p {
+        font-size: 0.95rem;
+    }
+    
+    /* Forms on mobile */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Buttons on mobile */
+    .btn {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Property detail adjustments */
+    .detail-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .image-gallery {
+        height: 250px !important;
+    }
+    
+    /* Admin panel adjustments */
+    .admin-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .admin-table {
+        overflow-x: auto;
+        display: block;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+    }
+    
+    .hero {
+        height: 400px;
+    }
+    
+    .property-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .property-price {
+        font-size: 1.25rem !important;
+    }
+    
+    .property-features {
+        font-size: 0.85rem;
+        gap: 0.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card h3 {
+        font-size: 2rem;
+    }
+    
+    .stat-card p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        height: 400px;
+    }
+    
+    .page-header {
+        padding: 2rem 0;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .footer,
+    .favorite-btn,
+    .mobile-menu-toggle,
+    .mobile-filter-toggle {
+        display: none !important;
+    }
+    
+    .property-card {
+        page-break-inside: avoid;
+    }
+}

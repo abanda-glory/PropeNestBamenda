@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorites - RealEstate</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/favorites.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h2>🏠 PropeNest</h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listings.html">Listings</a></li>
+                    <li><a href="favorites.html" class="active">Favorites</a></li>
+                    <li><a href="admin-login.html" class="admin-link">Admin</a></li>
+                </ul>
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>My Favorites</h1>
+            <p>Properties you've saved for later</p>
+        </div>
+    </section>
+
+    <!-- Favorites Content -->
+    <section class="favorites-section">
+        <div class="container">
+            <!-- Favorites Info Bar -->
+            <div class="favorites-info">
+                <div class="favorites-count">
+                    <h3><span id="favoritesCount">0</span> Saved Properties</h3>
+                </div>
+                <div class="favorites-actions">
+                    <button class="btn btn-secondary" onclick="clearAllFavorites()">
+                        Clear All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Favorites Grid -->
+            <div class="properties-grid" id="favoritesGrid">
+                <!-- Favorite properties will be loaded here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">💔</div>
+                <h2>No Favorites Yet</h2>
+                <p>Start adding properties to your favorites to see them here.</p>
+                <a href="listings.html" class="btn btn-primary">Browse Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PropeNest</h3>
+                    <p>Your trusted partner in finding the perfect property in Bamenda - The City of Legends.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                        <li><a href="favorites.html">Favorites</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: abandaglory91@gmail.com</p>
+                    <p>Phone: +237 683 528 474</p>
+                    <p>Location: Mulang, Bamenda, Northwest Region</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RealEstate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/favorites.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details - PropeNest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/property-detail.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <!-- <h2>PropeNest</h2> -->
+                    <img src="./assets/images/logo.jpg" class="img-logo" alt="Site logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="listings.html">Listings</a></li>
+                    <li><a href="favorites.html">Favorites</a></li>
+                    <li><a href="admin-login.html" class="admin-link">Admin</a></li>
+                </ul>
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Property Detail Content -->
+    <div class="detail-container">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> / 
+                <a href="listings.html">Listings</a> / 
+                <span id="breadcrumbTitle">Property</span>
+            </div>
+
+            <!-- Main Detail Section -->
+            <div class="detail-grid">
+                <!-- Left Column - Images and Info -->
+                <div class="detail-main">
+                    <!-- Image Gallery -->
+                    <div class="image-gallery">
+                        <div class="main-image">
+                            <img id="mainImage" src="" alt="Property Image">
+                            <button class="favorite-btn-large" id="favoriteBtn" onclick="togglePropertyFavorite()">
+                                🤍
+                            </button>
+                        </div>
+                        <div class="thumbnail-gallery" id="thumbnailGallery">
+                            <!-- Thumbnails will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Property Info -->
+                    <div class="property-info-section">
+                        <div class="property-header">
+                            <div>
+                                <span class="status-badge" id="statusBadge"></span>
+                                <h1 id="propertyTitle">Loading...</h1>
+                                <p class="location" id="propertyLocation">📍 Loading...</p>
+                            </div>
+                            <div class="price-section">
+                                <p class="price" id="propertyPrice">0 FCFA</p>
+                            </div>
+                        </div>
+
+                        <!-- Key Features -->
+                        <div class="key-features">
+                            <div class="feature">
+                                <span class="feature-icon">🏠</span>
+                                <div>
+                                    <p class="feature-label">Type</p>
+                                    <p class="feature-value" id="propertyType">-</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🛏️</span>
+                                <div>
+                                    <p class="feature-label">Bedrooms</p>
+                                    <p class="feature-value" id="propertyBedrooms">-</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🚿</span>
+                                <div>
+                                    <p class="feature-label">Bathrooms</p>
+                                    <p class="feature-value" id="propertyBathrooms">-</p>
+                                </div>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">📐</span>
+                                <div>
+                                    <p class="feature-label">Area</p>
+                                    <p class="feature-value" id="propertyArea">-</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="description-section">
+                            <h2>Description</h2>
+                            <p id="propertyDescription">Loading description...</p>
+                        </div>
+
+                        <!-- Amenities -->
+                        <div class="amenities-section">
+                            <h2>Amenities</h2>
+                            <div class="amenities-grid" id="amenitiesGrid">
+                                <!-- Amenities will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Contact Form -->
+                <div class="detail-sidebar">
+                    <div class="contact-card">
+                        <h3>Interested in this property?</h3>
+                        <p>Send us a message and we'll get back to you soon.</p>
+                        
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                            <div class="form-group">
+                                <label>Your Name *</label>
+                                <input type="text" id="contactName" required placeholder="John Doe">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" id="contactEmail" required placeholder="john@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Phone *</label>
+                                <input type="tel" id="contactPhone" required placeholder="+237 6XX XXX XXX">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Message *</label>
+                                <textarea id="contactMessage" required rows="5" placeholder="I'm interested in this property..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                        </form>
+                    </div>
+
+                    <!-- Agent Info Card -->
+                    <div class="agent-card">
+                        <h3>Contact Agent</h3>
+                        <div class="agent-info">
+                            <div class="agent-avatar">👤</div>
+                            <div>
+                                <h4>PropeNest Bamenda Team</h4>
+                                <p>Property Specialist</p>
+                            </div>
+                        </div>
+                        <div class="agent-contact">
+                            <p>📧 info@realestate-bamenda.cm</p>
+                            <p>📞 +237 683 528 474</p>
+                            <p>📍 Bamenda, NW Region</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Similar Properties -->
+            <div class="similar-properties">
+                <h2 class="section-title">Similar Properties</h2>
+                <div class="properties-grid" id="similarProperties">
+                    <!-- Similar properties will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PropeNest</h3>
+                    <p>Your trusted partner in finding the perfect property in Bamenda - The City of Legends.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                        <li><a href="favorites.html">Favorites</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: abandaglory91@gmail.com</p>
+                    <p>Phone: +237 683 528 474</p>
+                    <p>Location: Bamenda, Northwest Region</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PropeNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/contact-form.js"></script>
+    <script src="js/property-detail.js"></script>
+</body>
+</html>

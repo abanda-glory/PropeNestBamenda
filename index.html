@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropeNest - Find Your Dream Property</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <!-- <h2>PropeNest</h2> -->
+                    <div >
+                        <img src="./assets/images/logo.jpg" class=" img-logo" alt="site logo">
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="listings.html">Listings</a></li>
+                    <li><a href="favorites.html">Favorites</a></li>
+                    <li><a href="admin-login.html" class="admin-link">Admin</a></li>
+                </ul>
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Dream Property in Bamenda</h1>
+                <div class="typewriter">
+                    <span class="typewriter-text" id="typewriterText"></span>
+                </div>
+                
+                <!-- Quick Search -->
+                <div class="search-box">
+                    <input type="text" id="heroSearch" placeholder="Search by location or property name...">
+                    <button onclick="searchFromHero()">Search</button>
+                </div>
+
+                <div class="quick-filters">
+                    <button class="filter-btn" onclick="quickFilter('house')">Houses</button>
+                    <button class="filter-btn" onclick="quickFilter('apartment')">Apartments</button>
+                    <button class="filter-btn" onclick="quickFilter('land')">Land</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Featured Properties</h2>
+            <div class="properties-grid" id="featuredProperties">
+                <!-- Properties will be loaded here by JavaScript -->
+            </div>
+            <div class="text-center">
+                <a href="listings.html" class="btn btn-primary">View All Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalProperties">0</h3>
+                    <p>Properties Available</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalCities">0</h3>
+                    <p>Bamenda Quarters</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalCustomers">500+</h3>
+                    <p>Happy Customers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PropeNest</h3>
+                    <p>Your trusted partner in finding the perfect property in Bamenda - The City of Legends.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="listings.html">Listings</a></li>
+                        <li><a href="favorites.html">Favorites</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: abandaglory91@gmail.com</p>
+                    <p>Phone: +237 683 528 474</p>
+                    <p>Location: Mulang, Bamenda, Northwest Region</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PropeNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Typewriter Animation
+        const phrases = [
+            "Discover the best real estate deals in Bamenda",
+            "Find your perfect home in the City of Legends",
+            "Houses, Apartments, and Land across Bamenda",
+            "Properties in all Bamenda quarters and plots",
+            "Your dream property in Bamenda awaits you"
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        
+        function typeWriter() {
+            const typewriterElement = document.getElementById('typewriterText');
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                // Delete characters
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                // Type characters
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+            
+            // Check if phrase is complete
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                // Pause at end of phrase
+                typingSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                // Move to next phrase
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 500;
+            }
+            
+            setTimeout(typeWriter, typingSpeed);
+        }
+        
+        // Load featured properties on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            typeWriter(); // Start typewriter animation
+            loadFeaturedProperties();
+            updateStats();
+        });
+
+        function loadFeaturedProperties() {
+            const properties = getAllProperties();
+            const featuredProperties = properties.slice(0, 6); // Show first 6 properties
+            const container = document.getElementById('featuredProperties');
+            
+            container.innerHTML = featuredProperties.map(property => createPropertyCard(property)).join('');
+        }
+
+        function updateStats() {
+            const properties = getAllProperties();
+            document.getElementById('totalProperties').textContent = properties.length;
+            
+            // Count unique quarters in Bamenda
+            const quarters = new Set(properties.map(p => p.location.split(',')[0]));
+            document.getElementById('totalCities').textContent = quarters.size;
+        }
+
+        function searchFromHero() {
+            const searchTerm = document.getElementById('heroSearch').value;
+            localStorage.setItem('searchTerm', searchTerm);
+            window.location.href = 'listings.html';
+        }
+
+        function quickFilter(type) {
+            localStorage.setItem('filterType', type);
+            window.location.href = 'listings.html';
+        }
+    </script>
+</body>
+</html>
